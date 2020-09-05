@@ -3,19 +3,20 @@ import processing.core.PImage;
 
 public class Enemy extends PApplet{
 	
-	private PImage ghost;
-	private int posX;
-	private int posY;
-	private int speed;
-	private int h;
-	private int w;
+	protected PImage ghost;
+	protected int posX;
+	protected int posY;
+	protected int speed;
+	protected int h;
+	protected int w;
+	protected PApplet app;
 	
 	
 	
-	Enemy(PImage ghost, int posX, int posY, int speed, int h, int w ){
+	Enemy(int posX, int posY, int speed, int h, int w, PApplet app ){
+		this.app=app;
 		this.posX=posX;
 		this.posY=posY;
-		this.ghost=ghost;
 		this.h=h;
 		this.w=w;
 		this.speed=speed;

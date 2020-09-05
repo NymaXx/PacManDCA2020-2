@@ -19,14 +19,17 @@ public class Game extends PApplet {
 	public int coinCounter;
 	PImage principalScreen;
 	PImage gameScreen, resumeScreen;
-	int screen=2
-		;
+	int screen=1;
 	
 	public void setup() {
 		principalScreen= loadImage ("C:\\Users\\WINDOWS 10\\eclipse-workspace\\PACMAN DCA\\recursos/ERMAPSIN.png");
 		gameScreen= loadImage ("C:\\Users\\WINDOWS 10\\eclipse-workspace\\PACMAN DCA\\recursos/ERMAP.png");
 		resumeScreen= loadImage ("C:\\Users\\WINDOWS 10\\eclipse-workspace\\PACMAN DCA\\recursos/REC.png");
-		
+	
+		pink = new PinkEnemy(177, 265, 5, 40 ,40, this);
+		blue = new BlueEnemy(100, 546, 5, 40, 40, this);
+		violet = new VioletEnemy(576, 469, 5, 40 ,40, this);
+		green = new GreenEnemy(659, 184, 5, 40, 40, this);
 		
 	}
 	public void settings() {
@@ -45,6 +48,15 @@ public class Game extends PApplet {
 			
 		case 1:
 			image (gameScreen,0,0,800,700);
+			pink.paint();
+			pink.move();
+			blue.paint();
+			blue.move();
+			violet.paint();
+			violet.move();
+			green.paint();
+			green.move();
+			
 			break;
 			
 		case 2:
@@ -53,6 +65,9 @@ public class Game extends PApplet {
 		}
 		
 		
+		
+		//Linea de codigo para saber la posicion actual del mouse, uso solo durante la fase de codificacion
+		//no tiene utilidad real dentro de la ejecucion del programa
 		fill(0);
 		textSize(20);
 		text("X" + mouseX + "Y" + mouseY, mouseX, mouseY);
@@ -60,7 +75,6 @@ public class Game extends PApplet {
 	}
 	
 	public void mousePressed() {
-		//348 435
 		switch(screen) {
 		case 0:
 			if(mouseX> 348 && mouseX < 435 && mouseY > 357 && mouseY < 452) {
