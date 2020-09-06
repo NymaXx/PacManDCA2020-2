@@ -17,7 +17,7 @@ public class Game extends PApplet {
 	public static GreenEnemy green;
 	public static BlueEnemy blue;
 	public static PinkEnemy pink;
-	//public static Coin coin;
+	public static Coin coin, coin2, coin3, coin4;
 	
 	static boolean isPink=true;
 	static boolean isViolet=true;
@@ -55,7 +55,7 @@ public class Game extends PApplet {
 								{2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2}
 							};
 	
-		static ArrayList<Coin> coin = new ArrayList<Coin>();
+		//static ArrayList<Coin> coin = new ArrayList<Coin>();
 	
 	
 	
@@ -72,7 +72,10 @@ public class Game extends PApplet {
 		character = new Character(66+39 ,152+36,36,39,36,this);
 		
 		player = new Player("Player", Game.getCoinCounter());
-		//coin = new Coin(66+50 , 152+47, 19, 19, this);
+		coin = new Coin(66+50 , 152+47, 20, 20, this);
+		coin2 = new Coin(66+50 , 556, 20, 20, this);
+		coin3= new Coin(662 , 556, 20, 20, this);
+		coin4 = new Coin(662 , 152+47, 20, 20, this);
 		
 		
 		
@@ -117,11 +120,15 @@ public class Game extends PApplet {
 					}
 					
 					if(matrixMap[i][j] == 0) {
+						coin2.paint();
+						coin3.paint();
+						coin4.paint();
+						coin.paint();
 						if(drawEllipse==false) {
 							fill(255,192,0);
 							noStroke();
 							ellipseMode(RECT);
-						//66+39 ,152+36,36,39,36,
+							
 							ellipse(35+39*j, 124+36*i, 19, 19);
 						}
 						}
@@ -134,7 +141,7 @@ public class Game extends PApplet {
 			}
 		}*/
 			
-			
+			coin.erase();
 			
 			//Fin pintado y recorrido de la matriz
 			
@@ -184,7 +191,7 @@ public class Game extends PApplet {
 			fill(0);
 			textSize(32);
 			text(timeCounter +"", 146,106);
-			text(coinCounter + "" ,77,106);
+			text(coinCounter + "" ,69,106);
 		//Fin codigo de la cuenta regresiva
 			
 			break;

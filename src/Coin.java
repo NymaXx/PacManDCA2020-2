@@ -13,7 +13,7 @@ public class Coin extends PApplet {
 	
 	
 	Coin(int posX, int posY, int w, int h, PApplet app){
-		this.coine= app.loadImage("C:\\Users\\WINDOWS 10\\eclipse-workspace\\PACMAN DCA\\recursos/ERCOIN.png");
+		this.coine= app.loadImage("C:\\Users\\WINDOWS 10\\eclipse-workspace\\PACMAN DCA\\recursos/ERveluBonus.png");
 		this.posX=posX;
 		this.posY=posY;
 		this.h=h;
@@ -27,9 +27,13 @@ public class Coin extends PApplet {
 	 }
 	 
 	 void erase() {
-		 /*if(dist(Game.character.getPosX(), Game.character.getPosY(), Game.coin.getPosX(), Game.coin.getPosY())<=13){
-				Game.coinCounter+=1;
-			}*/
+		 if(dist(Game.character.getPosX(), Game.character.getPosY(), Game.coin.getPosX(), Game.coin.getPosY())<=13){
+				Game.coinCounter+=2;
+				Game.violet.setSpeed(1);
+				Game.blue.setSpeed(1);
+				Game.green.setSpeed(1);
+				Game.pink.setSpeed(1);
+			}
 	 }
 
 	public int getPosX() {
