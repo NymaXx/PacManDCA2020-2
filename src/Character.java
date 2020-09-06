@@ -9,20 +9,22 @@ public class Character extends PApplet{
 	private int speed;
 	private int h;
 	private int w;
+	PApplet app;
 	
-	Character(PImage pac, int posX, int posY, int speed, int h, int w){
-		this.pac=pac;
+	Character(int posX, int posY, int speed, int h, int w, PApplet app){
+		this.pac= app.loadImage("C:\\Users\\WINDOWS 10\\eclipse-workspace\\PACMAN DCA\\recursos/ERpac.png");
 		this.posX=posX;
 		this.posY=posY;
 		this.speed=speed;
 		this.h=h;
 		this.w=w;
+		this.app=app;
 		
 		
 	}
 	
 	void paint() {
-		
+		app.image(this.pac, this.posX, this.posY, this.w, this.h);
 	}
 	
 	void move() {

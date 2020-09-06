@@ -1,3 +1,4 @@
+
 import processing.core.PApplet;
 import processing.core.PImage;
 
@@ -15,8 +16,12 @@ public class Game extends PApplet {
 	public BlueEnemy blue;
 	public PinkEnemy pink;
 	public Coin coin;
+	
+	
 	public int timeCounter;
 	public int coinCounter;
+	
+	
 	PImage principalScreen;
 	PImage gameScreen, resumeScreen;
 	int screen=1;
@@ -45,6 +50,9 @@ public class Game extends PApplet {
 		blue = new BlueEnemy(107, 546, 3, 34, 32, this);
 		violet = new VioletEnemy(570, 476, 3, 34 ,32, this);
 		green = new GreenEnemy(654, 187, 3, 34, 32, this);
+		character = new Character(107,187,3,34,32,this);
+		timeCounter= 121;
+		frameRate(27);
 		
 	}
 	public void settings() {
@@ -62,7 +70,7 @@ public class Game extends PApplet {
 			break;
 			
 		case 1:
-			//creacion y recorrido de la matriz, por debajo de la interfaz grafica real del mapa
+			//Pintado y recorrido de la matriz, por debajo de la interfaz grafica real del mapa
 			for (int i = 0; i < matrixMap.length; i++)		// El primer índice recorre las filas.
 				for (int j = 0; j < matrixMap[i].length; j++){
 					if(matrixMap[i][j] == 1){
@@ -71,6 +79,7 @@ public class Game extends PApplet {
 						rect(66 + (39*j), 152+ (36*i), 39,36);
 					}
 				}
+			//Fin pintado y recorrido de la matriz
 			
 			image (gameScreen,0,0,800,700);
 			pink.paint();
@@ -81,6 +90,23 @@ public class Game extends PApplet {
 			violet.move();
 			green.paint();
 			green.move();
+			character.paint();
+			
+			
+		//Cuenta regresiva	y reinicio del contador cada vez que se reinicia el Juego
+			if(frameCount% 27 == 0) {
+				timeCounter --;
+				if(timeCounter == 0) {
+					screen = 2;
+				}
+			}
+			if(screen != 1) {
+				timeCounter=121;
+			}
+			fill(0);
+			textSize(32);
+			text(timeCounter +"", 146,106);
+		//Fin codigo de la cuenta regresiva
 			
 			break;
 			
@@ -96,6 +122,7 @@ public class Game extends PApplet {
 		fill(0);
 		textSize(20);
 		text("X" + mouseX + "Y" + mouseY, mouseX, mouseY);
+		
 		
 	}
 	
