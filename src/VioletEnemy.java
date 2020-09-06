@@ -24,7 +24,7 @@ public class VioletEnemy extends Enemy{
 		
 		void power() {
 			if(dist(Game.character.getPosX(), Game.character.getPosY(), Game.violet.getPosX(), Game.violet.getPosY())<=30){
-				Game.coinCounter-=4;
+				Game.setCoinCounter(Game.getCoinCounter()-4);
 				Game.violetPower=false;
 				Game.isViolet=false;
 			}

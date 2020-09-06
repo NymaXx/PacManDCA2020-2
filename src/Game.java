@@ -1,4 +1,6 @@
 
+import java.util.ArrayList;
+
 import processing.core.PApplet;
 import processing.core.PImage;
 
@@ -9,13 +11,13 @@ public class Game extends PApplet {
 		PApplet.main(Game.class.getName());
 	}
 
-	public Player player;
+	public static Player player;
 	public static Character character;
 	public static VioletEnemy violet;
 	public static GreenEnemy green;
 	public static BlueEnemy blue;
 	public static PinkEnemy pink;
-	public static Coin coin;
+	//public static Coin coin;
 	
 	static boolean isPink=true;
 	static boolean isViolet=true;
@@ -28,7 +30,7 @@ public class Game extends PApplet {
 	
 	static int timeCounter;
 	static int coinCounter;
-	
+	public boolean drawEllipse=false;
 	
 	PImage principalScreen;
 	PImage gameScreen, resumeScreen;
@@ -53,6 +55,10 @@ public class Game extends PApplet {
 								{2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2}
 							};
 	
+		static ArrayList<Coin> coin = new ArrayList<Coin>();
+	
+	
+	
 	public void setup() {
 		principalScreen= loadImage ("C:\\Users\\WINDOWS 10\\eclipse-workspace\\PACMAN DCA\\recursos/ERMAPSIN.png");
 		gameScreen= loadImage ("C:\\Users\\WINDOWS 10\\eclipse-workspace\\PACMAN DCA\\recursos/ERMAPAREAL.png");
@@ -65,7 +71,10 @@ public class Game extends PApplet {
 		
 		character = new Character(66+39 ,152+36,36,39,36,this);
 		
-		coin = new Coin(66+50 , 152+47, 19, 19, this);
+		player = new Player("Player", Game.getCoinCounter());
+		//coin = new Coin(66+50 , 152+47, 19, 19, this);
+		
+		
 		
 		
 		
@@ -85,7 +94,9 @@ public class Game extends PApplet {
 		
 		switch(screen) {
 		case 0:
-			coinCounter=0;
+			Game.setCoinCounter(0);
+			Game.setTimeCounter(121);
+			//timeCounter=121;
 			image (principalScreen,0,0,800,700);
 			break;
 			
@@ -105,11 +116,26 @@ public class Game extends PApplet {
 						rect(27+ 39*j, 116 + 36*i, 39, 36);
 					}
 					
-					if(matrixMap[i][j]==0) {
-						coin.paint();
-						
-					}
+					if(matrixMap[i][j] == 0) {
+						if(drawEllipse==false) {
+							fill(255,192,0);
+							noStroke();
+							ellipseMode(RECT);
+						//66+39 ,152+36,36,39,36,
+							ellipse(35+39*j, 124+36*i, 19, 19);
+						}
+						}
+					
 				}
+				
+		/*if(matrixMap[fili][colu]==0) {
+			for(int f =0; f< 65; f++) {
+				coin.add(new Coin(35+39*fili, 124+36*colu, 19,19,this));
+			}
+		}*/
+			
+			
+			
 			//Fin pintado y recorrido de la matriz
 			
 			if(isPink==true) {
@@ -155,9 +181,6 @@ public class Game extends PApplet {
 					screen = 2;
 				}
 			}
-			if(screen != 1) {
-				timeCounter=121;
-			}
 			fill(0);
 			textSize(32);
 			text(timeCounter +"", 146,106);
@@ -178,6 +201,11 @@ public class Game extends PApplet {
 			isPink=true;
 			isViolet=true;
 			isGreen=true;
+			
+			textSize(30);
+			text(player.getNickName()+ "",157,293);
+			text(Game.getTimeCounter()+ "", 505,293);
+			text(Game.getCoinCounter()+ "", 353,293);
 			
 			
 			break;
@@ -237,6 +265,8 @@ public class Game extends PApplet {
 			if(matrixMap[fili][colu+1]!=1 && matrixMap[fili][colu+1]!= 2) {
 				character.setPosX(character.getPosX()+ character.getW());
 				colu++;
+				coinCounter++;
+				drawEllipse=true;
 			}
 			break;
 			
@@ -244,6 +274,8 @@ public class Game extends PApplet {
 			if(matrixMap[fili][colu-1]!=1 && matrixMap[fili][colu-1]!= 2) {
 				character.setPosX(character.getPosX()- character.getW());
 				colu--;
+				coinCounter++;
+				drawEllipse=true;
 			}
 			break;
 			
@@ -251,6 +283,8 @@ public class Game extends PApplet {
 			if(matrixMap[fili-1][colu]!=1 && matrixMap[fili-1][colu]!= 2) {
 				character.setPosY(character.getPosY()- character.getSpeed());
 				fili--;
+				coinCounter++;
+				drawEllipse=true;
 			}
 			break;
 			
@@ -258,6 +292,8 @@ public class Game extends PApplet {
 			if(matrixMap[fili+1][colu]!=1 && matrixMap[fili+1][colu]!= 2) {
 				character.setPosY(character.getPosY()+ character.getSpeed());
 				fili++;
+				coinCounter++;
+				drawEllipse=true;
 			}
 			break;
 			
@@ -268,6 +304,19 @@ public class Game extends PApplet {
 		}
 		
 		
-		
 	}
+	public static int getCoinCounter() {
+		return coinCounter;
+	}
+	public static void setCoinCounter(int coinCounter) {
+		Game.coinCounter = coinCounter;
+	}
+	public static int getTimeCounter() {
+		return timeCounter;
+	}
+	public static void setTimeCounter(int timeCounter) {
+		Game.timeCounter = timeCounter;
+	}
+
+
 }

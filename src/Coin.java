@@ -27,9 +27,9 @@ public class Coin extends PApplet {
 	 }
 	 
 	 void erase() {
-		 if(dist(Game.character.getPosX(), Game.character.getPosY(), Game.coin.getPosX(), Game.coin.getPosY())<=13){
+		 /*if(dist(Game.character.getPosX(), Game.character.getPosY(), Game.coin.getPosX(), Game.coin.getPosY())<=13){
 				Game.coinCounter+=1;
-			}
+			}*/
 	 }
 
 	public int getPosX() {
