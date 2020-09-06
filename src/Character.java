@@ -11,6 +11,7 @@ public class Character extends PApplet{
 	private int w;
 	PApplet app;
 	
+	
 	Character(int posX, int posY, int speed, int h, int w, PApplet app){
 		this.pac= app.loadImage("C:\\Users\\WINDOWS 10\\eclipse-workspace\\PACMAN DCA\\recursos/ERpac.png");
 		this.posX=posX;
@@ -28,7 +29,34 @@ public class Character extends PApplet{
 	}
 	
 	void move() {
-		
+	switch(keyCode) {
+	case RIGHT:
+		if(Game.matrixMap[Game.fili][Game.colu+1]!=1) {
+			this.posX += 39;
+			Game.fili++;
+		}
+		break;
+	case LEFT:
+		if(Game.matrixMap[Game.fili][Game.colu-1]!=1) {
+			this.posX -= 39;
+			Game.fili--;
+		}
+		break;
+	case UP:
+		if(Game.matrixMap[Game.fili-1][Game.colu]!=1) {
+			this.posY -= 36;
+			Game.colu--;
+		}
+		break;
+	case DOWN:
+		if(Game.matrixMap[Game.fili+1][Game.colu]!=1) {
+			this.posY += 36;
+			Game.colu++;
+		}
+		break;
+	default:
+		break;
+	}
 	}
 	
 	void eat() {

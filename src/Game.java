@@ -18,15 +18,21 @@ public class Game extends PApplet {
 	public Coin coin;
 	
 	
-	public int timeCounter;
-	public int coinCounter;
+	
+	static int timeCounter;
+	static int coinCounter;
 	
 	
 	PImage principalScreen;
 	PImage gameScreen, resumeScreen;
 	int screen=1;
 	//16 13
-	int matrixMap [][]= {{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+	
+	static int col = 17;
+	static int row = 13;
+	static int colu;
+	static int fili;
+	static int matrixMap [][]= {{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
 						 {1,0,0,0,0,1,0,0,0,0,0,1,0,0,0,0,1},
 						 {1,0,1,1,0,1,0,1,1,1,0,1,0,1,1,0,1},
 						 {1,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,1},
@@ -50,7 +56,8 @@ public class Game extends PApplet {
 		blue = new BlueEnemy(107, 546, 3, 34, 32, this);
 		violet = new VioletEnemy(570, 476, 3, 34 ,32, this);
 		green = new GreenEnemy(654, 187, 3, 34, 32, this);
-		character = new Character(107,187,3,34,32,this);
+		
+		character = new Character(66+39 ,152+36,3,34,32,this);
 		timeCounter= 121;
 		frameRate(27);
 		
@@ -73,10 +80,11 @@ public class Game extends PApplet {
 			//Pintado y recorrido de la matriz, por debajo de la interfaz grafica real del mapa
 			for (int i = 0; i < matrixMap.length; i++)		// El primer índice recorre las filas.
 				for (int j = 0; j < matrixMap[i].length; j++){
+					matrixMap[i][j] = matrixMap[fili][colu];
 					if(matrixMap[i][j] == 1){
 						fill(127,200,251);
 						noStroke();
-						rect(66 + (39*j), 152+ (36*i), 39,36);
+						rect(66 + (39*colu), 152+ (36*fili), 39,36);
 					}
 				}
 			//Fin pintado y recorrido de la matriz
@@ -91,6 +99,10 @@ public class Game extends PApplet {
 			green.paint();
 			green.move();
 			character.paint();
+			
+			
+			
+			
 			
 			
 		//Cuenta regresiva	y reinicio del contador cada vez que se reinicia el Juego
@@ -149,19 +161,10 @@ public class Game extends PApplet {
 	}
 	
 	public void keyPressed() {
-		switch(keyCode) {
-		case UP:
-			break;
-			
-		case DOWN:
-			break;
+		System.out.println("funciona");
+		character.move(); 
 		
-		case LEFT:
-			break;
 		
-		case RIGHT:
-			break;
-		}
 		
 	}
 }
