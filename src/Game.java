@@ -1,5 +1,5 @@
 
-import java.util.ArrayList;
+//import java.util.ArrayList;
 
 import processing.core.PApplet;
 import processing.core.PImage;
@@ -9,7 +9,24 @@ public class Game extends PApplet {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		PApplet.main(Game.class.getName());
+		
+		/*TITULO DEL PROYECTO: SWEETPACMAN DCA_DULCEY_PAULA
+		 * INSTRUCCIONES BASICAS: Una vez iniciado el programa se debe hacer clic en el icono
+		 * PLAY, el personaje se mueve con las flechas del teclado
+		 * el juego acaba cuando el tiempo llega a cero o el personaje muere
+		 * 
+		 * FALLOIMPORTANTE: No se pudo implementar adecuadamente el uso de listas
+		 * por lo que no se pudo  coseguir un contador de puntos efectivo y el final en donde
+		 * se recolectan todas las monedas no se puede dar
+		 * 
+		 * AUTORA: Paula Marcela Dulcey Madronero
+		 * 
+		 * AGRADECIMIENTOS: A Jhon Izquierdo y Juan Camilo Lopez*/
+		
+		
 	}
+	// Clase Principal en donde se relacionaran las demas clases, funciona como Main
+	//estan el draw y los metodos con teclado y mouse. Autora: Paula Marcela Dulcey Madronero
 
 	public static Player player;
 	public static Character character;
@@ -135,15 +152,22 @@ public class Game extends PApplet {
 					
 				}
 				
+			//For de recorrido de ArrayList de monedas (No supe manejarlo)
 		/*if(matrixMap[fili][colu]==0) {
 			for(int f =0; f< 65; f++) {
 				coin.add(new Coin(35+39*fili, 124+36*colu, 19,19,this));
 			}
 		}*/
+	
 			
-			coin.erase();
 			
 			//Fin pintado y recorrido de la matriz
+			
+			//al final estos metodos solo funcionaron para anadir un poder basico al personaje
+			coin.erase();
+			coin2.erase();
+			coin3.erase();
+			coin4.erase();
 			
 			if(isPink==true) {
 			pink.paint();
@@ -196,7 +220,7 @@ public class Game extends PApplet {
 			
 			break;
 			
-		case 2:
+		case 2: //pantalla de resumen de la partida, reinicio de las variables para reiniciar el juego 
 			image (resumeScreen,0,0,800,700);
 			violet.setSpeed(3);
 			blue.setSpeed(3);
@@ -230,6 +254,7 @@ public class Game extends PApplet {
 	}
 	
 	public void mousePressed() {
+		//cambios de pantalla con clics
 		switch(screen) {
 		case 0:
 			if(mouseX> 348 && mouseX < 435 && mouseY > 357 && mouseY < 452) {

@@ -1,6 +1,14 @@
 import processing.core.PApplet;
 import processing.core.PImage;
 
+/*Clase CHARACTER que funciona como clase instanciada en el Main, sin herencia. Su finalidad
+ * es recrear al personaje principal PACMAN y cuenta con los metodos de  pintar y mover
+ * los metodos de perder puntos, comer, morir y demas fueron reemplazados por las funciones de los
+ * enemigos y Coins, ya que ellos afectan las variables en general. Sin embargo se dejan expresados
+ * para fidelidad con el diagrama de clases
+ * Autora Paula Marcela Dulcey Madronero
+ * */
+ 
 public class Character extends PApplet{
 	
 	private PImage pac;
@@ -38,7 +46,7 @@ public class Character extends PApplet{
 			
 		}
 			
-		}*/ //por alguna razon el codigo presente en MOVE no agarra como metodo en GAME, asi que se puso especificamente
+		}*/ //por alguna razon el codigo presente en MOVE no funcionaa como metodo en GAME, asi que se puso especificamente
 		//en el KEYPRESSED  de GAME
 		
 	switch(keyCode) {

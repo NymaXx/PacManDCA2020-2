@@ -1,9 +1,14 @@
 import processing.core.PApplet;
-import processing.core.PImage;
 
-public class Enemy extends PApplet{
+
+/*La clase ENEMY es  la clase padre de PinkEnemy, BlueEnemy, VioletEnemy y GreenEnemy, y extiende de PApplet
+ * es una clase abstracta que no sufrira cambio algunno y su unica funcion es heredar metodos
+ * y atributos que seran sobreescritos en cada clase hija segun la necesidad especifica
+ * 
+ * Autora: Paula Marcela DUlcey Madronero
+ * */
+abstract class Enemy extends PApplet{
 	
-	protected PImage ghost;
 	protected int posX;
 	protected int posY;
 	protected int speed;

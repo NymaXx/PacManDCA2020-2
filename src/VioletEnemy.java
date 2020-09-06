@@ -1,6 +1,11 @@
 import processing.core.PApplet;
 import processing.core.PImage;
 
+/*clase VIOLETEnemy funciona como clase hija que hereda de la clase Enemy y sobreescribe metodos 
+ * y atributos. Cuenta con metodos pintar, mover y accion de poder. Funciona para recrear
+ * al enemigo VIOLET del juego, que cuenta con un poder especifico
+ * Autora Paula Marcela Dulcey Madronero
+ * */
 public class VioletEnemy extends Enemy{
 	PImage ghost;
 

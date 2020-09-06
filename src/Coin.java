@@ -1,7 +1,9 @@
 import processing.core.PApplet;
 import processing.core.PImage;
 
-
+//Clase Coin (moneda) que tiene como finalidad servir para crear objetos monedas para el puntaje
+//score del juego. Cuenta con metodos de pintado, otorgar puntos y getters && setters 
+//Autora Paula Marcela Dulcey Madronero
 
 public class Coin extends PApplet {
 	private PImage coine;

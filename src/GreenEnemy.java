@@ -1,6 +1,12 @@
 import processing.core.PApplet;
 import processing.core.PImage;
 
+/*clase GREENnemy funciona como clase hija que hereda de la clase Enemy y sobreescribe metodos 
+ * y atributos. Cuenta con metodos pintar, mover y accion de poder. Funciona para recrear
+ * al enemigo GREEN del juego, que cuenta con un poder especifico
+ * Autora Paula Marcela Dulcey Madronero
+ * */
+
 public class GreenEnemy extends Enemy{
 
 		PImage ghost;

@@ -1,6 +1,11 @@
 import processing.core.PApplet;
 import processing.core.PImage;
 
+/*clase BLUEEnemy funciona como clase hija que hereda de la clase Enemy y sobreescribe metodos 
+ * y atributos. Cuenta con metodos pintar, mover y accion de poder. Funciona para recrear
+ * al enemigo BLUE del juego, que cuenta con un poder especifico
+ * Autora Paula Marcela Dulcey Madronero
+ * */
 public class BlueEnemy extends Enemy {
 	
 	PImage ghost;
@@ -17,10 +22,6 @@ public class BlueEnemy extends Enemy {
 	}
 	
 	void move() {
-		
-		
-		
-		
 		this.posY= this.posY+this.speed;
 		
 		if(this.posY<= 187 || this.posY>546) {
