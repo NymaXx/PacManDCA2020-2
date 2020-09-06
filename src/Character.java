@@ -38,7 +38,8 @@ public class Character extends PApplet{
 			
 		}
 			
-		}*/
+		}*/ //por alguna razon el codigo presente en MOVE no agarra como metodo en GAME, asi que se puso especificamente
+		//en el KEYPRESSED  de GAME
 		
 	switch(keyCode) {
 	

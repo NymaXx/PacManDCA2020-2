@@ -17,12 +17,16 @@ public class VioletEnemy extends Enemy{
 		void move() {
 			this.posX= this.posX+this.speed;
 			
-			if(this.posX<= 183 || this.posX>570) {
+			if(this.posX<= 183 || this.posX>573) {
 				this.speed= this.speed*-1;
 			}
 		}
 		
 		void power() {
-			
+			if(dist(Game.character.getPosX(), Game.character.getPosY(), Game.violet.getPosX(), Game.violet.getPosY())<=30){
+				Game.coinCounter-=4;
+				Game.violetPower=false;
+				Game.isViolet=false;
+			}
 		}
 }

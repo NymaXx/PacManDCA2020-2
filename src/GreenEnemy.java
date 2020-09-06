@@ -24,6 +24,15 @@ public class GreenEnemy extends Enemy{
 	
 	void power() {
 		
+		if(dist(Game.character.getPosX(), Game.character.getPosY(), Game.green.getPosX(), Game.green.getPosY())<=30) {
+			Game.coinCounter=40;
+			Game.isGreen=false;
+			//Game.character.setPosY(188); PPor alguna razon este Set modifica la manera en la que se mueve el personaje a lo largo de la matriz
+		}
+		
+	if(Game.screen!=1) {
+		this.setPosY(188);
+	}
 	}
 	
 	

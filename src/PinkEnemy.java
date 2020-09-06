@@ -25,7 +25,14 @@ public class PinkEnemy extends Enemy{
 	}
 	
 	void power() {
-		
+		if(dist(Game.character.getPosX(), Game.character.getPosY(), Game.pink.getPosX(), Game.pink.getPosY())<=30) {
+			Game.violet.setSpeed(9);
+			Game.blue.setSpeed(9);
+			Game.green.setSpeed(9);
+			Game.pink.setSpeed(9);
+			Game.isPink=false;
+			Game.pinkPower=false;
+		}
 	}
 
 }

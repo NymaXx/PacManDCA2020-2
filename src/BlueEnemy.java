@@ -29,6 +29,10 @@ public class BlueEnemy extends Enemy {
 	}
 	
 	void power() {
-		
+		if(dist(Game.character.getPosX(), Game.character.getPosY(), Game.blue.getPosX(), Game.blue.getPosY())<=30) {
+			Game.screen=2;
+			//Game.character.setPosY(188); PPor alguna razon este Set modifica la manera en la que se mueve el personaje a lo largo de la matriz
+			Game.blue.setPosY(540);
+		}
 	}
 }

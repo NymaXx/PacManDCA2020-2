@@ -4,7 +4,7 @@ import processing.core.PImage;
 
 
 public class Coin extends PApplet {
-	private PImage coinn;
+	private PImage coine;
 	private int posX;
 	private int posY;
 	private int h;
@@ -13,20 +13,23 @@ public class Coin extends PApplet {
 	
 	
 	Coin(int posX, int posY, int w, int h, PApplet app){
-		this.coinn= app.loadImage("C:\\Users\\WINDOWS 10\\eclipse-workspace\\PACMAN DCA\\recursos/ERCOIN.png");
+		this.coine= app.loadImage("C:\\Users\\WINDOWS 10\\eclipse-workspace\\PACMAN DCA\\recursos/ERCOIN.png");
 		this.posX=posX;
 		this.posY=posY;
 		this.h=h;
 		this.w=w;
+		this.app=app;
 		
 	}
 	
 	 void paint() {
-		 app.image(this.coinn, this.posX, this.posY, this.w, this.h);
+		 app.image(this.coine, this.posX, this.posY, this.w, this.h);
 	 }
 	 
 	 void erase() {
-		 
+		 if(dist(Game.character.getPosX(), Game.character.getPosY(), Game.coin.getPosX(), Game.coin.getPosY())<=13){
+				Game.coinCounter+=1;
+			}
 	 }
 
 	public int getPosX() {
