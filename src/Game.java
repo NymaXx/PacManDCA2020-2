@@ -27,21 +27,23 @@ public class Game extends PApplet {
 	PImage gameScreen, resumeScreen;
 	int screen=1;
 	//16 13
-	static int colu=1;
-	static int fili=1;
-	static int matrixMap [][]= {{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
-						 {1,0,0,0,0,1,0,0,0,0,0,1,0,0,0,0,1},
-						 {1,0,1,1,0,1,0,1,1,1,0,1,0,1,1,0,1},
-						 {1,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,1},
-						 {1,0,1,0,1,0,1,1,0,1,1,0,1,0,1,0,1},
-						 {1,0,1,0,1,0,1,0,0,0,1,0,1,0,1,0,1},
-						 {0,0,0,0,1,0,1,0,0,0,1,0,1,0,0,0,0},
-						 {1,0,1,0,1,0,1,0,0,0,1,0,1,0,1,0,1},
-						 {1,0,1,0,1,0,1,1,1,1,1,0,1,0,1,0,1},
-						 {1,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,1},
-						 {1,0,1,1,0,1,0,1,1,1,0,1,0,1,1,0,1},
-						 {1,0,0,0,0,1,0,0,0,0,0,1,0,0,0,0,1},
-						 {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}
+	static int colu=2;
+	static int fili=2;
+	static int matrixMap [][]= {{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+								{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+								{1,1,0,0,0,0,1,0,0,0,0,0,1,0,0,0,0,1,1},
+								{1,1,0,1,1,0,1,0,1,1,1,0,1,0,1,1,0,1,1},
+								{1,1,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,1,1},
+								{1,1,0,1,0,1,0,1,1,0,1,1,0,1,0,1,0,1,1},
+								{1,1,0,1,0,1,0,1,0,0,0,1,0,1,0,1,0,1,1},
+								{1,0,0,0,0,1,0,1,0,0,0,1,0,1,0,0,0,0,1},
+								{1,1,0,1,0,1,0,1,0,0,0,1,0,1,0,1,0,1,1},
+								{1,1,0,1,0,1,0,1,1,1,1,1,0,1,0,1,0,1,1},
+								{1,1,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,1,1},
+								{1,1,0,1,1,0,1,0,1,1,1,0,1,0,1,1,0,1,1},
+								{1,1,0,0,0,0,1,0,0,0,0,0,1,0,0,0,0,1,1},
+								{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+								{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}
 							};
 	
 	public void setup() {
@@ -54,7 +56,7 @@ public class Game extends PApplet {
 		violet = new VioletEnemy(570, 476, 3, 34 ,32, this);
 		green = new GreenEnemy(654, 187, 3, 34, 32, this);
 		
-		character = new Character(66+39 ,152+36,36,34,32,this);
+		character = new Character(66+39 ,152+36,36,39,36,this);
 		timeCounter= 121;
 		frameRate(27);
 		
@@ -74,18 +76,19 @@ public class Game extends PApplet {
 			break;
 			
 		case 1:
+			image (gameScreen,0,0,800,700);
 			//Pintado y recorrido de la matriz, por debajo de la interfaz grafica real del mapa
-			for (int i = 0; i < matrixMap.length; i++)		// El primer índice recorre las filas.
+			for (int i = 0; i < matrixMap.length; i++)	
 				for (int j = 0; j < matrixMap[i].length; j++){
 					if(matrixMap[i][j] == 1){
 						fill(127,200,251);
 						noStroke();
-						rect(66 + (39*colu), 152+ (36*fili), 39,36);
+						rect(27 + (39*j), 116+ (36*i), 39,36);
 					}
 				}
 			//Fin pintado y recorrido de la matriz
 			
-			image (gameScreen,0,0,800,700);
+			
 			pink.paint();
 			pink.move();
 			blue.paint();
@@ -161,48 +164,51 @@ public class Game extends PApplet {
 	}
 	
 	public void keyPressed() {
-		character.move();
 		
-		/*if (keyCode  == RIGHT) {
+		
+		if (keyCode  == RIGHT) {
 			if(matrixMap[fili][colu+1]!=1) {
 				character.setPosX(character.getPosX()+ character.getSpeed()+3);
 				colu++;
-			System.out.println(colu);
+			
 		}
-			System.out.println("funciona puto");
-		}*/
+		}
 	
 
 		
 	//Prueba del estupido switch
-		/*switch(keyCode) {
+		switch(keyCode) {
 		case RIGHT:
 			if(matrixMap[fili][colu+1]!=1) {
-				character.getPosX() += character.getSpeed()+3;
-				fili++;
-			}
-			break;
-		case LEFT:
-			if(matrixMap[fili][colu-1]!=1) {
-				character.getPosX() -= (character.getSpeed()+3);
-				fili--;
-			}
-			break;
-		case UP:
-			if(matrixMap[fili-1][colu]!=1) {
-				character.getPosY() -= character.getSpeed();
-				colu--;
-			}
-			break;
-		case DOWN:
-			if(matrixMap[fili+1][colu]!=1) {
-				character.getPosY() += character.getSpeed();
+				character.setPosX(character.getPosX()+ character.getSpeed()+3);
 				colu++;
 			}
 			break;
+			
+		case LEFT:
+			if(matrixMap[fili][colu-1]!=1) {
+				character.setPosX(character.getPosX()- character.getSpeed()+3);;
+				colu--;
+			}
+			break;
+			
+		case UP:
+			if(matrixMap[fili-1][colu]!=1) {
+				character.setPosY(character.getPosY()- character.getSpeed());;
+				fili--;
+			}
+			break;
+			
+		case DOWN:
+			if(matrixMap[fili+1][colu]!=1) {
+				character.setPosY(character.getPosY()+ character.getSpeed());;
+				fili++;
+			}
+			break;
+			
 		default:
 			break;
-		}*/
+		}
 		
 		
 		
