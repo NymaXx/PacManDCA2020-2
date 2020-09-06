@@ -28,36 +28,54 @@ public class Character extends PApplet{
 		app.image(this.pac, this.posX, this.posY, this.w, this.h);
 	}
 	
+	
 	void move() {
+		
+		/*if (keyCode  == RIGHT) {
+			if(Game.matrixMap[Game.fili][Game.colu+1]!=1) {
+				this.posX += this.speed+3;
+				Game.fili++;
+			
+		}
+			
+		}*/
+		
 	switch(keyCode) {
+	
 	case RIGHT:
+		System.out.println("funciona");
 		if(Game.matrixMap[Game.fili][Game.colu+1]!=1) {
-			this.posX += 39;
-			Game.fili++;
+			this.posX += this.speed+3;
+			Game.colu++;
+			
 		}
 		break;
 	case LEFT:
 		if(Game.matrixMap[Game.fili][Game.colu-1]!=1) {
-			this.posX -= 39;
-			Game.fili--;
+			this.posX -= this.speed+3;
+			Game.colu--;
+			System.out.println("funciona2");
 		}
 		break;
 	case UP:
 		if(Game.matrixMap[Game.fili-1][Game.colu]!=1) {
-			this.posY -= 36;
-			Game.colu--;
+			this.posY -= this.speed;
+			Game.fili--;
+			System.out.println("funciona3");
 		}
 		break;
 	case DOWN:
 		if(Game.matrixMap[Game.fili+1][Game.colu]!=1) {
-			this.posY += 36;
-			Game.colu++;
+			this.posY += this.speed;
+			Game.fili++;
+			System.out.println("funciona4");
 		}
 		break;
 	default:
 		break;
 	}
 	}
+	
 	
 	void eat() {
 		
