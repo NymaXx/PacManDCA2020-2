@@ -17,6 +17,8 @@ public class Game extends PApplet {
 	public PinkEnemy pink;
 	public Coin coin;
 	
+	PImage stupidcoin;
+	
 	
 	
 	static int timeCounter;
@@ -57,6 +59,10 @@ public class Game extends PApplet {
 		green = new GreenEnemy(654, 187, 3, 34, 32, this);
 		
 		character = new Character(66+39 ,152+36,36,39,36,this);
+		coin = new Coin (66+39 , 152+36, 39, 36, this);
+		
+		stupidcoin= loadImage("C:\\Users\\WINDOWS 10\\eclipse-workspace\\PACMAN DCA\\recursos/ERCOIN.png");
+		
 		timeCounter= 121;
 		frameRate(27);
 		
@@ -105,7 +111,9 @@ public class Game extends PApplet {
 			
 			character.paint();
 			
+			//coin.paint();
 			
+			image(stupidcoin, 100,100,100,100);
 			
 			
 			
@@ -184,14 +192,14 @@ public class Game extends PApplet {
 		switch(keyCode) {
 		case RIGHT:
 			if(matrixMap[fili][colu+1]!=1 && matrixMap[fili][colu+1]!= 2) {
-				character.setPosX(character.getPosX()+ 39);
+				character.setPosX(character.getPosX()+ character.getW());
 				colu++;
 			}
 			break;
 			
 		case LEFT:
 			if(matrixMap[fili][colu-1]!=1 && matrixMap[fili][colu-1]!= 2) {
-				character.setPosX(character.getPosX()- 39);
+				character.setPosX(character.getPosX()- character.getW());
 				colu--;
 			}
 			break;

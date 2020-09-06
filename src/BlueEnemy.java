@@ -17,6 +17,10 @@ public class BlueEnemy extends Enemy {
 	}
 	
 	void move() {
+		
+		
+		
+		
 		this.posY= this.posY+this.speed;
 		
 		if(this.posY<= 187 || this.posY>546) {

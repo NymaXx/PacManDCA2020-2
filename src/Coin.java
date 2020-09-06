@@ -9,9 +9,11 @@ public class Coin extends PApplet {
 	private int posY;
 	private int h;
 	private int w;
+	PApplet app;
 	
-	Coin( PImage coinn, int posX, int posY, int h, int w ){
-		this.coinn=coinn;
+	
+	Coin(int posX, int posY, int w, int h, PApplet app){
+		this.coinn= app.loadImage("C:\\Users\\WINDOWS 10\\eclipse-workspace\\PACMAN DCA\\recursos/ERCOIN.png");
 		this.posX=posX;
 		this.posY=posY;
 		this.h=h;
@@ -20,7 +22,7 @@ public class Coin extends PApplet {
 	}
 	
 	 void paint() {
-		 
+		 app.image(this.coinn, this.posX, this.posY, this.w, this.h);
 	 }
 	 
 	 void erase() {
