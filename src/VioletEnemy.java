@@ -17,7 +17,7 @@ public class VioletEnemy extends Enemy{
 		void move() {
 			this.posX= this.posX+this.speed;
 			
-			if(this.posX<= 176 || this.posX>580) {
+			if(this.posX<= 183 || this.posX>570) {
 				this.speed= this.speed*-1;
 			}
 		}

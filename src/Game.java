@@ -20,16 +20,31 @@ public class Game extends PApplet {
 	PImage principalScreen;
 	PImage gameScreen, resumeScreen;
 	int screen=1;
+	//16 13
+	int matrixMap [][]= {{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+						 {1,0,0,0,0,1,0,0,0,0,0,1,0,0,0,0,1},
+						 {1,0,1,1,0,1,0,1,1,1,0,1,0,1,1,0,1},
+						 {1,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,1},
+						 {1,0,1,0,1,0,1,1,0,1,1,0,1,0,1,0,1},
+						 {1,0,1,0,1,0,1,0,0,0,1,0,1,0,1,0,1},
+						 {0,0,0,0,1,0,1,0,0,0,1,0,1,0,0,0,0},
+						 {1,0,1,0,1,0,1,0,0,0,1,0,1,0,1,0,1},
+						 {1,0,1,0,1,0,1,1,1,1,1,0,1,0,1,0,1},
+						 {1,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,1},
+						 {1,0,1,1,0,1,0,1,1,1,0,1,0,1,1,0,1},
+						 {1,0,0,0,0,1,0,0,0,0,0,1,0,0,0,0,1},
+						 {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}
+							};
 	
 	public void setup() {
 		principalScreen= loadImage ("C:\\Users\\WINDOWS 10\\eclipse-workspace\\PACMAN DCA\\recursos/ERMAPSIN.png");
-		gameScreen= loadImage ("C:\\Users\\WINDOWS 10\\eclipse-workspace\\PACMAN DCA\\recursos/ERMAP.png");
+		gameScreen= loadImage ("C:\\Users\\WINDOWS 10\\eclipse-workspace\\PACMAN DCA\\recursos/ERMAPAREAL.png");
 		resumeScreen= loadImage ("C:\\Users\\WINDOWS 10\\eclipse-workspace\\PACMAN DCA\\recursos/REC.png");
 	
-		pink = new PinkEnemy(177, 265, 5, 40 ,40, this);
-		blue = new BlueEnemy(100, 546, 5, 40, 40, this);
-		violet = new VioletEnemy(576, 469, 5, 40 ,40, this);
-		green = new GreenEnemy(659, 184, 5, 40, 40, this);
+		pink = new PinkEnemy(184, 260, 3, 34 ,32, this);
+		blue = new BlueEnemy(107, 546, 3, 34, 32, this);
+		violet = new VioletEnemy(570, 476, 3, 34 ,32, this);
+		green = new GreenEnemy(654, 187, 3, 34, 32, this);
 		
 	}
 	public void settings() {
@@ -47,6 +62,16 @@ public class Game extends PApplet {
 			break;
 			
 		case 1:
+			//creacion y recorrido de la matriz, por debajo de la interfaz grafica real del mapa
+			for (int i = 0; i < matrixMap.length; i++)		// El primer índice recorre las filas.
+				for (int j = 0; j < matrixMap[i].length; j++){
+					if(matrixMap[i][j] == 1){
+						fill(127,200,251);
+						noStroke();
+						rect(66 + (39*j), 152+ (36*i), 39,36);
+					}
+				}
+			
 			image (gameScreen,0,0,800,700);
 			pink.paint();
 			pink.move();
