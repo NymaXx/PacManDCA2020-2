@@ -12,7 +12,7 @@ public class Character extends PApplet{
 	PApplet app;
 	
 	
-	Character(int posX, int posY, int speed, int h, int w, PApplet app){
+	Character(int posX, int posY, int speed, int w, int h, PApplet app){
 		this.pac= app.loadImage("C:\\Users\\WINDOWS 10\\eclipse-workspace\\PACMAN DCA\\recursos/ERpac.png");
 		this.posX=posX;
 		this.posY=posY;

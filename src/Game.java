@@ -29,21 +29,21 @@ public class Game extends PApplet {
 	//16 13
 	static int colu=2;
 	static int fili=2;
-	static int matrixMap [][]= {{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
-								{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
-								{1,1,0,0,0,0,1,0,0,0,0,0,1,0,0,0,0,1,1},
-								{1,1,0,1,1,0,1,0,1,1,1,0,1,0,1,1,0,1,1},
-								{1,1,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,1,1},
-								{1,1,0,1,0,1,0,1,1,0,1,1,0,1,0,1,0,1,1},
-								{1,1,0,1,0,1,0,1,0,0,0,1,0,1,0,1,0,1,1},
-								{1,0,0,0,0,1,0,1,0,0,0,1,0,1,0,0,0,0,1},
-								{1,1,0,1,0,1,0,1,0,0,0,1,0,1,0,1,0,1,1},
-								{1,1,0,1,0,1,0,1,1,1,1,1,0,1,0,1,0,1,1},
-								{1,1,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,1,1},
-								{1,1,0,1,1,0,1,0,1,1,1,0,1,0,1,1,0,1,1},
-								{1,1,0,0,0,0,1,0,0,0,0,0,1,0,0,0,0,1,1},
-								{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
-								{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}
+	static int matrixMap [][]= {{2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2},
+								{2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2},
+								{2,1,0,0,0,0,1,0,0,0,0,0,1,0,0,0,0,1,2},
+								{2,1,0,1,1,0,1,0,1,1,1,0,1,0,1,1,0,1,2},
+								{2,1,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,1,2},
+								{2,1,0,1,0,1,0,1,1,0,1,1,0,1,0,1,0,1,2},
+								{2,1,0,1,0,1,0,1,0,0,0,1,0,1,0,1,0,1,2},
+								{2,0,0,0,0,1,0,1,0,0,0,1,0,1,0,0,0,0,2},
+								{2,1,0,1,0,1,0,1,0,0,0,1,0,1,0,1,0,1,2},
+								{2,1,0,1,0,1,0,1,1,1,1,1,0,1,0,1,0,1,2},
+								{2,1,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,1,2},
+								{2,1,0,1,1,0,1,0,1,1,1,0,1,0,1,1,0,1,2},
+								{2,1,0,0,0,0,1,0,0,0,0,0,1,0,0,0,0,1,2},
+								{2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2},
+								{2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2}
 							};
 	
 	public void setup() {
@@ -84,6 +84,11 @@ public class Game extends PApplet {
 						fill(127,200,251);
 						noStroke();
 						rect(27 + (39*j), 116+ (36*i), 39,36);
+					}
+					if(matrixMap[i][j] == 2) {
+						fill(0);
+						noStroke();
+						rect(27+ 39*j, 116 + 36*i, 39, 36);
 					}
 				}
 			//Fin pintado y recorrido de la matriz
@@ -165,43 +170,42 @@ public class Game extends PApplet {
 	
 	public void keyPressed() {
 		
-		
-		if (keyCode  == RIGHT) {
-			if(matrixMap[fili][colu+1]!=1) {
+		/*ensayo del KEYCODE movimiento del personaje que si funciono
+		 if (keyCode  == RIGHT) {
+			if(matrixMap[fili][colu+1]!=1 || matrixMap[fili][colu+1]!= 2) {
 				character.setPosX(character.getPosX()+ character.getSpeed()+3);
 				colu++;
 			
 		}
-		}
+		}*/
 	
-
 		
-	//Prueba del estupido switch
+	// switch que no funciono en el metodo mover del personaje sabra dios porque
 		switch(keyCode) {
 		case RIGHT:
-			if(matrixMap[fili][colu+1]!=1) {
-				character.setPosX(character.getPosX()+ character.getSpeed()+3);
+			if(matrixMap[fili][colu+1]!=1 && matrixMap[fili][colu+1]!= 2) {
+				character.setPosX(character.getPosX()+ 39);
 				colu++;
 			}
 			break;
 			
 		case LEFT:
-			if(matrixMap[fili][colu-1]!=1) {
-				character.setPosX(character.getPosX()- character.getSpeed()+3);;
+			if(matrixMap[fili][colu-1]!=1 && matrixMap[fili][colu-1]!= 2) {
+				character.setPosX(character.getPosX()- 39);
 				colu--;
 			}
 			break;
 			
 		case UP:
-			if(matrixMap[fili-1][colu]!=1) {
-				character.setPosY(character.getPosY()- character.getSpeed());;
+			if(matrixMap[fili-1][colu]!=1 && matrixMap[fili-1][colu]!= 2) {
+				character.setPosY(character.getPosY()- character.getSpeed());
 				fili--;
 			}
 			break;
 			
 		case DOWN:
-			if(matrixMap[fili+1][colu]!=1) {
-				character.setPosY(character.getPosY()+ character.getSpeed());;
+			if(matrixMap[fili+1][colu]!=1 && matrixMap[fili+1][colu]!= 2) {
+				character.setPosY(character.getPosY()+ character.getSpeed());
 				fili++;
 			}
 			break;
