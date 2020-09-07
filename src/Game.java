@@ -25,8 +25,9 @@ public class Game extends PApplet {
 		
 		
 	}
-	// Clase Principal en donde se relacionaran las demas clases, funciona como Main
-	//estan el draw y los metodos con teclado y mouse. Autora: Paula Marcela Dulcey Madronero
+	 /*Clase Principal en donde se relacionaran las demas clases, funciona como Main
+	estan el draw y los metodos con teclado y mouse.
+	Autora: Paula Marcela Dulcey Madronero*/
 
 	public static Player player;
 	public static Character character;
@@ -51,7 +52,7 @@ public class Game extends PApplet {
 	
 	PImage principalScreen;
 	PImage gameScreen, resumeScreen;
-	static int screen=1;
+	static int screen=0;
 	//16 13
 	static int colu=2;
 	static int fili=2;
